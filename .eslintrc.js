@@ -138,7 +138,7 @@ module.exports = {
         "operator-assignment": 0, //赋值运算符的风格
         "padded-blocks": [2, "never"], //块内行首行尾是否空行
         "quotes": [1, "single", "avoid-escape"], //引号风格
-        "semi": 0, //强制语句分号结尾
+        "semi": 1, //强制语句分号结尾
         "semi-spacing": [2, {"before": false, "after": true}], //分后前后空格
         "sort-vars": 0, //变量声明时排序
         "space-before-blocks": [2, "always"], //块前的空格

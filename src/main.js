@@ -4,14 +4,11 @@ import VueRouter from 'vue-router';
 import axios from 'axios';
 import routes from './routes';
 import store from './store';
-import vueMoment from 'vue-moment';
 import 'moment/locale/zh-cn';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import filters from './filters';
 import app from './App.vue';
-import 'tz-vue-ui/dist/static/css/tz-vue-ui.css';
-import { api } from './views/login/api';
 import localStorage from 'localStorage';
 import { LOCAL_USER } from './store/user';
 
@@ -22,12 +19,9 @@ Object.keys(filters).forEach(key => {
 // Resource logic
 Vue.use(VueRouter);
 Vue.use(ElementUI);
-// 注册moment
-Vue.use(vueMoment);
 
 window.$Vue = Vue;
 
-// 注册全局判断权限方法
 let baseURL = '';
 
 /*global process:true*/
@@ -41,7 +35,7 @@ if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development') {
 Vue.prototype.baseURL = axios.defaults.baseURL = baseURL;
 //添加拦截器注入 token
 axios.interceptors.request.use(function (config) {
-    if (config.url.indexOf(api.API_LOGIN.url) === -1 && store.state.user.token) {
+    if (store.state.user.token) {
         config.headers['X-Token'] = store.state.user.token.toString();
     }
     return config;
@@ -97,17 +91,7 @@ router.beforeEach((to, from, next) => {
                         });
                     } else {
                         store.commit('SIGN_IN', retUser);
-                        store.dispatch('getMsg');
-                        store.dispatch('refreshFieldList').then(() => { // 获取menu小红点
-                                // 一分钟后未读消息重新轮循
-                                if (process.env.NODE_ENV !== 'development') {
-                                    myTime = setInterval(() => {
-                                        store.commit('SIGN_IN', retUser);
-                                        store.dispatch('refreshFieldList'); // 更新字典等信息
-                                    }, 60000);
-                                }
-                                next();
-                            });
+                        next();
                     }
                 },
                 () => {
@@ -136,7 +120,7 @@ var appVue = new Vue({
     //系统异常
     $on('netError', function (msg = '系统异常') {
         this.$message.error(msg);
-    })
+    });
 
 // 添加一个响应拦截器
 axios.interceptors.response.use(function (response) {

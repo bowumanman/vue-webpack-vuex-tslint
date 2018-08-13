@@ -18,8 +18,6 @@
 
 <script type="text/ecmascript-6">
     import { mapActions } from 'vuex';
-    import {api} from './api';
-    import {STATUS_HTTP_SUCCESS, apiHttp} from '__service/csHttp';
     export default {
         name: 'Login',
         data() {
@@ -58,21 +56,16 @@
                 this.$refs.form.validate((valid) => {
                     if (valid) {
                         this.loginLoading = true;
-                        apiHttp(api.API_LOGIN,this.form).then(ret=> {
-                                    if (ret.resCode === STATUS_HTTP_SUCCESS) {
-                                        this.signIn(ret.data)
-                                    } else {
-                                        this.loginLoading = false;
-                                    }
-                                }
-                        );
-                    } else {
-                        return false;
+                        const userInfo = {
+                            token: '1234qwer'
+                        };
+                        this.signIn(userInfo);
+                        this.$router.push({name: 'home-page'});
                     }
                 });
             }
         },
-    }
+    };
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>

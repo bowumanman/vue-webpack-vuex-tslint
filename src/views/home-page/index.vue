@@ -11,7 +11,7 @@
         data() {
             return {
 
-            }
+            };
         },
         mounted() {
         },
@@ -21,7 +21,7 @@
         components: {
 
         }
-    }
+    };
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 
