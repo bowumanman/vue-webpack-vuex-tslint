@@ -1,6 +1,6 @@
 <template>
     <div>
-        我的主页
+        个人中心
     </div>
 </template>
 <script type="text/ecmascript-6">

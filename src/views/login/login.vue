@@ -2,10 +2,10 @@
     <div class="content">
         <div class="main">
             <el-form ref="form" :rules="rules" :model="form" label-position="right" >
-                <el-form-item label="用户名">
+                <el-form-item label="用户名" prop="loginName">
                     <el-input v-model="form.loginName"></el-input>
                 </el-form-item>
-                <el-form-item label="密码">
+                <el-form-item label="密码" prop="password">
                     <el-input v-model="form.password"></el-input>
                 </el-form-item>
                 <el-form-item>
@@ -24,8 +24,8 @@
             return {
                 loginLoading: false,
                 form: {
-                    loginName: '',
-                    password: '',
+                    loginName: null,
+                    password: null,
                 },
                 rules: {
                     loginName: [

@@ -106,11 +106,6 @@ router.beforeEach((to, from, next) => {
 
 var appVue = new Vue({
     el: '#root',
-    data: function () {
-        return {
-            Dot: new Vue()
-        };
-    },
     methods: {
     },
     router,

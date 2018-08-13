@@ -24,6 +24,14 @@ const routes = [
                     require(['__views/home-page'], resolve);
                 }
             },
+            {
+                path: 'personal-center',
+                name: 'personal-center',
+                meta: { auth: true },
+                component: (resolve) => {
+                    require(['__views/personal-center'], resolve);
+                }
+            },
         ]
     }, {
         // not found handler
