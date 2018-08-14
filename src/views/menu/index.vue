@@ -14,7 +14,7 @@
                     >
                     <el-menu-item index="home-page">
                         <i class="fa fa-fw fa-home"></i>
-                        <span slot="title">我的主页</span>
+                        <span slot="title">我的主页1</span>
                     </el-menu-item>
                     <el-submenu index="1">
                         <template slot="title">
