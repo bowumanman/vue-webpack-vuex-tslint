@@ -19,7 +19,7 @@
                     <el-submenu index="1">
                         <template slot="title">
                             <i class="fa fa-fw fa-home"></i>
-                            <span>导航一1</span>
+                            <span>导航一12</span>
                         </template>
                         <el-menu-item index="1-1">选项1</el-menu-item>
                         <el-menu-item index="1-2">选项2</el-menu-item>
